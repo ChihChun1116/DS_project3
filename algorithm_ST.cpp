@@ -72,7 +72,6 @@ void algorithm_A(Board board, Player player, int index[]){
             }
         }
     }
-    // no such position, find the position that needs fewest orbs to explode
     if (row == -1) {
         min_capacity = 9;
         for (int i = 0; i < 4; i++) {
