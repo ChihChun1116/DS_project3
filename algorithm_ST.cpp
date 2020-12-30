@@ -30,16 +30,32 @@ void algorithm_A(Board board, Player player, int index[]){
 
     //////your algorithm design///////////
 
-    int row,col;
+    int row, col;
     int color = player.get_color();
+    int surround_r[8] = {-1, -1, -1, 0, 0, 1, 1, 1};  
+    int surround_c[8] = {-1, 0, 1, -1, 1, -1, 0 ,1};
+    int s_row, s_col;
 
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 6; j++) {
             if (board.get_cell_color(i, j) == color || board.get_cell_color(i, j) == 'w') {
-                //find the best position (there are opponent's orbs at the surrounding)
+                for (int k = 0; k < 8; k++) {
+                    s_row = i + surround_r[k];
+                    s_col = j + surround_c[k];
+                    if (s_row >= 0 && s_row <= 4 && s_col >= 0 && s_col <= 5) {
+                        // explode earlier than opponent
+                        //find the best position (there are opponent's orbs at the surrounding)
+                    }
+                }
+                
             }
         }
     }
     
     // no such position, find the position that needs fewest orbs to explode
+
+    index[0] = row;
+    index[1] = col;
+
+    return;
 }
