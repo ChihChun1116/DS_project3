@@ -55,6 +55,11 @@ void algorithm_A(Board board, Player player, int index[]){
                         if (board.get_cell_color(s_row, s_col) != color && board.get_cell_color(s_row, s_col) != 'w') {     // opponent
                             if (explosion_orbs_lack(board, i, j) <= explosion_orbs_lack(board, s_row, s_col)) {             // explode earlier than opponent
                                 opponent_nearby++;
+                                if (explosion_orbs_lack(board, i, j) == 1) {
+                                    index[0] = i;
+                                    index[1] = j;
+                                    return;
+                                }
                             }
                         }
                     }
