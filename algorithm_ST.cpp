@@ -29,6 +29,17 @@ using namespace std;
 void algorithm_A(Board board, Player player, int index[]){
 
     //////your algorithm design///////////
-   
+
+    int row,col;
+    int color = player.get_color();
+
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 6; j++) {
+            if (board.get_cell_color(i, j) == color || board.get_cell_color(i, j) == 'w') {
+                //find the best position (there are opponent's orbs at the surrounding)
+            }
+        }
+    }
     
+    // no such position, find the position that needs fewest orbs to explode
 }
