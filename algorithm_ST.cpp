@@ -35,13 +35,14 @@ void algorithm_A(Board board, Player player, int index[]){
 
     //////your algorithm design///////////
 
-    int row, col;
+    int row = -1, col;
     int color = player.get_color();
     int surround_r[8] = {-1, -1, -1, 0, 0, 1, 1, 1};  
     int surround_c[8] = {-1, 0, 1, -1, 1, -1, 0 ,1};
     int s_row, s_col;
     int opponent_nearby;
     int max_opp_near = 0;
+    int capacity, min_capacity;
 
     for (int i = 0; i < 5; i++) {                                                                   // whole board
         for (int j = 0; j < 6; j++) {
@@ -71,8 +72,22 @@ void algorithm_A(Board board, Player player, int index[]){
             }
         }
     }
-    
     // no such position, find the position that needs fewest orbs to explode
+    if (row == -1) {
+        min_capacity = 9;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (board.get_cell_color(i, j) == color || board.get_cell_color(i, j) == 'w') {
+                    capacity = board.get_capacity(i, j);
+                    if (capacity < min_capacity) {
+                        min_capacity = capacity;
+                        row = i;
+                        col = j;
+                    }
+                }
+            }
+        }
+    }
 
     index[0] = row;
     index[1] = col;
