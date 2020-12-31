@@ -30,10 +30,7 @@ int explosion_orbs_lack(Board board, int i, int j)
     return board.get_capacity(i, j) - board.get_orbs_num(i, j);
 }
 
-
-void algorithm_A(Board board, Player player, int index[]){
-
-    //////your algorithm design///////////
+void algorithm_A(Board board, Player player, int index[]) {
 
     int row = -1, col;
     int color = player.get_color();
@@ -42,7 +39,7 @@ void algorithm_A(Board board, Player player, int index[]){
     int s_row, s_col;
     int opponent_nearby;
     int max_opp_near = 0;
-    int capacity, min_capacity;
+    int capacity_left, min_cap_left;
 
     for (int i = 0; i < 5; i++) {                                                                   // whole board
         for (int j = 0; j < 6; j++) {
@@ -78,13 +75,13 @@ void algorithm_A(Board board, Player player, int index[]){
         }
     }
     if (row == -1) {
-        min_capacity = 9;
+        min_cap_left = 9;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 5; j++) {
                 if (board.get_cell_color(i, j) == color || board.get_cell_color(i, j) == 'w') {
-                    capacity = board.get_capacity(i, j);
-                    if (capacity < min_capacity) {
-                        min_capacity = capacity;
+                    capacity_left = explosion_orbs_lack(board, i, j);
+                    if (capacity_left < min_cap_left) {
+                        min_cap_left = capacity_left;
                         row = i;
                         col = j;
                     }
